@@ -1,6 +1,6 @@
 import React from 'react';
 import 'antd/dist/antd.css';
-import { Avatar, Button, Input, Layout, Row } from 'antd';
+import { Avatar, Button, Input, Layout, Row, Tooltip, Icon } from 'antd';
 import ChatStyled from '../../styles/chat';
 
 import {
@@ -143,7 +143,7 @@ function ChatContent() {
                     </Row>
                     <span className="mr-auto"/>
                     <div>
-                        <Button style={{border: "0"}}>
+                        <Button style={{border: "0"}} onClick={()=>alert('Ban da nhan vao link')}>
                             <Phone size={20} strokeWidth={1}/>
                         </Button>
                         <Button style={{border: "0"}}>
@@ -196,7 +196,14 @@ function ChatContent() {
                                     <Mic size={20} strokeWidth={1}/>
                                 </Button>
                                 
-                                <TextArea placeholder="Type a message" autoSize />
+                                <TextArea placeholder="Type a message" 
+                                    autoSize={{maxRows: 4}}
+                                    suffix={
+                                        <Tooltip title="Extra information">
+                                          <Icon type="info-circle" style={{ color: 'rgba(0,0,0,.45)' }} />
+                                        </Tooltip>
+                                      }
+                                      />
                                 <Button type="link">
                                     <Send size={20} strokeWidth={1}/>
                                 </Button>

@@ -3,12 +3,35 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import 'antd/dist/antd.css';
 import {GlobalStyles} from './styles/globalstyles'
+import {BrowserRouter as Router,
+    Switch,
+    Route,
+    Link} from 'react-router-dom'
+import Signup from './components/auth/Signup';
+import Signin from './components/auth/Signin';
+import Forgot from './components/auth/Forgot';
 // import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
     <Suspense fallback={(<div>Loading ~~~</div>)}>
-        <GlobalStyles/>
-        <App />
+        <Router>
+            <GlobalStyles/>
+            
+            <Switch>
+                <Route exact path="/">
+                    <App />
+                </Route>
+                <Route exact path="/signup">
+                    <Signup />
+                </Route>
+                <Route exact path="/signin">
+                    <Signin />
+                </Route>
+                <Route exact path="/forgot">
+                    <Forgot />
+                </Route>
+            </Switch>
+        </Router>
     </Suspense>
     , document.getElementById('root'));
 

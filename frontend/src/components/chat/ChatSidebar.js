@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { Avatar, Input, Layout, List, Menu} from "antd";
+import { Avatar, Input, Layout, List, Menu, Badge} from "antd";
 import {
     CheckCircle,
     Heart,
@@ -17,12 +17,14 @@ function ChatSidebar() {
             name: "Bobby Sullivan",
             status: "Mollis Nullam",
             avatar: (
-                <Avatar
-                    size={48}
-                    style={{ color: "#f56a00", backgroundColor: "#fde3cf" }}
-                >
-                    B
-                </Avatar>
+                <Badge dot status="success">
+                    <Avatar
+                        size={48}
+                        style={{ color: "#f56a00", backgroundColor: "#fde3cf" }}
+                    >
+                        B
+                    </Avatar>
+                </Badge>
             )
         },
         {

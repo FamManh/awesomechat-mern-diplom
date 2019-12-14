@@ -1851,6 +1851,12 @@ const GlobalStyles = createGlobalStyle`
   .am-weather-cloud-2 > path, [id^=cloudy-day-] > path {
     stroke-width: 0;
   }
+
+  .ant-badge-dot{
+    position: absolute;
+    top: 10px;
+    right: 7px;
+  }
 `;
 
 export { GlobalStyles, theme };
