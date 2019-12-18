@@ -10,6 +10,7 @@ import {BrowserRouter as Router,
 import Signup from './components/auth/Signup';
 import Signin from './components/auth/Signin';
 import Forgot from './components/auth/Forgot';
+import './i18n';
 // import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
