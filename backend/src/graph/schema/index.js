@@ -21,6 +21,7 @@ module.exports = buildSchema(`
 
     type RootQuery{
         users: [User!]!
+        user: User!
     }
 
     type RootMutation {
