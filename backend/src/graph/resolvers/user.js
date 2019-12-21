@@ -31,7 +31,12 @@ let userMocks = [
 ]
 
 module.exports = {
-    users: () => {
+    users: (args) => {
+        console.log(__("Welcome to React"));
         return userMocks;
+    },
+    user: (args) =>{
+       console.log(__("Welcome to React"));
+       return userMocks[0]; 
     }
 }
