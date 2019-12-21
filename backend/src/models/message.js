@@ -22,3 +22,5 @@ let MessageSchema = new schema({
         fileName: String
     }
 }, {timestamps: true})
+
+module.exports = mongoose.model('Message', MessageSchema);
