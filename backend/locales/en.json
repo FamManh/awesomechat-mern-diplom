@@ -1,8 +1,0 @@
-{
-	"Welcome to React": "Welcome to React and react-i18next %s",
-	"auth": {
-		"sigin": "Signin",
-		"sigup": "Signup"
-	},
-	"auth.sigin": "auth.sigin"
-}

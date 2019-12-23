@@ -1,4 +1,5 @@
 const UserModel = require('../../models/user');
+const {i18n} = require('../../i18n')
 
 let userMocks = [
     {
@@ -31,12 +32,11 @@ let userMocks = [
 ]
 
 module.exports = {
+    
     users: (args) => {
-        console.log(__("Welcome to React"));
         return userMocks;
     },
     user: (args) =>{
-       console.log(__("Welcome to React"));
        return userMocks[0]; 
     }
 }

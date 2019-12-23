@@ -8,14 +8,14 @@ let UserSchema = new schema({
         required: true,
         trim: true,
         maxlength: 20,
-        minlength: 4
+        minlength: 3
     },
     lastName : {
         type: String,
         required: true,
         trim: true,
         maxlength: 20,
-        minlength: 4
+        minlength: 3
     },
     avatar: String,
     email: {
@@ -28,6 +28,10 @@ let UserSchema = new schema({
     phone: {
         type: String,
         maxlength: 16
+    },
+    isActive: {
+        type: Boolean,
+        default: false
     }
 }, {timestamps: true});
 
