@@ -42,6 +42,7 @@ module.exports = {
                 // send mail
                 let host = process.env.APP_HOST;
                 let port = process.env.APP_PORT;
+                return 'Success'
                 return sendMail(
                     user.email,
                     i18n(

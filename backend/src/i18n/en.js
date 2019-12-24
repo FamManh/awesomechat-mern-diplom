@@ -30,6 +30,18 @@ const en = {
         }
     },
 
+    contact: {
+        friendRequest: {
+            sent: `You have sent a friend request`,
+            cancel: `You have canceled the friend request`,
+            confirm: `You have confirmed the friend request`,
+            error: `Something is wrong`
+        },
+        unfriend: {
+            message: `You have unfriended with {0}`
+        }
+    },
+
     errors: {
         forbidden: {
             message: "Forbidden"
