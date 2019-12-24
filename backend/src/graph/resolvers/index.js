@@ -1,7 +1,7 @@
 const authResolver = require('./auth')
-const userResolver = require('./user')
+const contactResolver = require('./contact')
 
 module.exports = {
     ...authResolver,
-    ...userResolver
-}
+    ...contactResolver
+};

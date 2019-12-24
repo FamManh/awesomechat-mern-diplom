@@ -27,13 +27,16 @@ module.exports = buildSchema(`
     }
 
     type RootQuery{
-        users: [User!]!
-        user: User!
+        signin(email: String!, password: String!): AuthData!
     }
 
     type RootMutation {
         signup(userInput: UserInput!) : String!
-        signin(email: String!, password: String!): AuthData!
+
+        sendFriendRequest(friendId: String!): String!
+        cancelFriendRequest(friendId: String!): String!
+        confirmFriendRequest(friendId: String!): String!
+        unfriend(friendId: String!): String!
     }
 
     schema {
