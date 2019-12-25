@@ -1,12 +1,15 @@
 import React from "react";
-import ChatPage from "./components/chat/ChatPage";
-import {useTranslation} from 'react-i18next'
+import ChatPage from "./pages/chat/ChatPage";
+import {useTranslation} from 'react-i18next';
 
 function App() {
-    const {t, i18n} = useTranslation();
+    const {t} = useTranslation();
     return (
         <>
-            <ChatPage/>
+            {/* {t("Auth.Already have an account? Sign in", {
+                framework: "sdasdfasdf"
+            })} */}
+            <ChatPage />
         </>
     );
 }

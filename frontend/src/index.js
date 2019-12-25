@@ -7,9 +7,9 @@ import {BrowserRouter as Router,
     Switch,
     Route,
     Link} from 'react-router-dom'
-import Signup from './components/auth/Signup';
-import Signin from './components/auth/Signin';
-import Forgot from './components/auth/Forgot';
+import Signup from './pages/auth/Signup';
+import Signin from './pages/auth/Signin';
+import Forgot from './pages/auth/Forgot';
 import './i18n';
 // import * as serviceWorker from './serviceWorker';
 
