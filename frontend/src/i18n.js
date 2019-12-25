@@ -47,8 +47,8 @@ i18n
 
         interpolation: {
             escapeValue: false
-        },
-        keySeparator: false, // we do not use keys in form message.welcome 
+        }
+        //keySeparator: true, // we do not use keys in form message.welcome 
 
         
     })
