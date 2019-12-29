@@ -3,3 +3,7 @@
 # Hiển thị danh sách bạn bè, tìm kiếm bạn bè, gửi lời mới kết bạn, xác nhận lời mờ, hủy lời mờ, hủy bạn bè.
 
 # Sử dụng thư viên socket.io để gửi những thông báo thời gian thực
+
+
+
+# Lỗi thông báo lỗi cho user. hiển lỗi ở cả sign in và sign up

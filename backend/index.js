@@ -17,27 +17,48 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cookieParser());
 
+app.use((req, res, next) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Methods", "POST,GET,OPTIONS");
+    res.setHeader(
+        "Access-Control-Allow-Headers",
+        "Content-Type, Authorization"
+    );
+    if (req.method === "OPTIONS") {
+        return res.sendStatus(200);
+    }
+    next();
+});
 
 // authentication
 app.use(isAuth);
 
 // set locale
 app.use( (req, res, next)=>{
-    req.language = 'en'
-    return next()
+    req.language = 'en';
+    return next();
 })
 
 // verify account
 app.get("/verify/:verifyToken", verifyAccount);
 
 // graphql
-app.use("/graphql",
-    graphHttp({
+app.use(
+    "/graphql",
+    graphHttp(req => ({
         schema: graphqlSchema,
         rootValue: graphqlResolvers,
-        graphiql: true
-    })    
-)
+        graphiql: true,
+        customFormatErrorFn: error=> {
+            return {
+                message: error.message,
+                code: error.originalError && error.originalError.code,
+                locations: error.locations,
+                path: error.path
+            };
+        }
+    }))
+);
 
 // connect to mongodb
 connectDB();
