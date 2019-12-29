@@ -8,14 +8,14 @@ let UserSchema = new schema({
         required: true,
         trim: true,
         maxlength: 20,
-        minlength: 3
+        minlength: 2
     },
     lastName : {
         type: String,
         required: true,
         trim: true,
         maxlength: 20,
-        minlength: 3
+        minlength: 2
     },
     avatar: String,
     email: {

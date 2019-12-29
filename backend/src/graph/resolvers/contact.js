@@ -1,6 +1,7 @@
 const UserModel = require("../../models/user");
 const ContactModel = require("../../models/contact");
 const { i18n } = require("../../i18n");
+const ValidationError = require("../../errors/validationError");
 
 module.exports = {
     sendFriendRequest: async (args, req) => {
@@ -20,7 +21,10 @@ module.exports = {
 
         // Check contact exists
         if (contact || (contact && contact.status)) {
-            throw new Error(i18n(req.language, "contact.friendRequest.error"));
+            throw new ValidationError(
+                req.language,
+                "contact.friendRequest.error"
+            );
         }
 
         let contactInfo = new ContactModel({
@@ -57,7 +61,10 @@ module.exports = {
 
         // Check contact, ì not exist return error
         if (!contact) {
-            throw new Error(i18n(req.language, "contact.friendRequest.error"));
+            throw new ValidationError(
+                req.language,
+                "contact.friendRequest.error"
+            );
         }
 
         await contact.remove();
@@ -78,7 +85,10 @@ module.exports = {
 
         // Check contact, if not exist return error
         if (!contact) {
-            throw new Error(i18n(req.language, "contact.friendRequest.error"));
+            throw new ValidationError(
+                req.language,
+                "contact.friendRequest.error"
+            );
         }
 
         contact.status = true;
@@ -93,7 +103,10 @@ module.exports = {
         // check user's friend
         let friend = await UserModel.findById(friendId);
         if (!friend) {
-            throw new Error(i18n(req.language, "auth.userNotFound.message"));
+            throw new ValidationError(
+                req.language,
+                "auth.userNotFound.message"
+            );
         }
 
         let contact = await ContactModel.findOne({
@@ -117,10 +130,17 @@ module.exports = {
 
         // Check contact, if not exist return error
         if (!contact) {
-            throw new Error(i18n(req.language, "contact.friendRequest.error"));
+            throw new ValidationError(
+                req.language,
+                "contact.friendRequest.error"
+            );
         }
         // remove contact
         await contact.remove();
-        return i18n(req.language, "contact.unfriend.message", friend.firstName + " " + friend.lastName);
+        return i18n(
+            req.language,
+            "contact.unfriend.message",
+            friend.firstName + " " + friend.lastName
+        );
     }
 };

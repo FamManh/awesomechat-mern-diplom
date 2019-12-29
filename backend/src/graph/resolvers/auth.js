@@ -4,6 +4,7 @@ const uuidv4 = require("uuid/v4");
 const sendMail = require("../../config/mailer");
 const { i18n } = require("../../i18n");
 const jwt = require("jsonwebtoken");
+const ValidationError  = require("../../errors/validationError");
 
 module.exports = {
     signup: async (args, req) => {
@@ -16,12 +17,18 @@ module.exports = {
 
         // if user exists but has been not activated, return error
         if (user && !user.isActive) {
-            throw new Error(i18n(req.language, "auth.emailUnverified.message"));
+            throw new ValidationError(
+                req.language,
+                "auth.emailUnverified.message"
+            );
         }
 
         // if user exists
         if (user) {
-            throw new Error(i18n(req.language, "auth.emailAddressInUse.error"));
+            throw new ValidationError(
+                req.language,
+                "auth.emailAddressInUse.error"
+            );
         }
 
         // create hashed password
@@ -42,7 +49,6 @@ module.exports = {
                 // send mail
                 let host = process.env.APP_HOST;
                 let port = process.env.APP_PORT;
-                return 'Success'
                 return sendMail(
                     user.email,
                     i18n(
@@ -69,8 +75,8 @@ module.exports = {
                         throw err;
                     });
             })
-            .catch(err => {
-                throw err;
+            .catch(error => {
+                throw new ValidationError(req.language, error);
             });
     },
 
@@ -82,21 +88,23 @@ module.exports = {
 
         // account does not exists
         if (!user) {
-            throw new Error(i18n(req.language, "auth.userNotFound.message"));
+            throw new ValidationError(
+                req.language,
+                "auth.userNotFound.message"
+            );
         }
 
         // account has not been activated
         if (user && !user.isActive) {
-            throw new Error(
-                i18n(req.language, "auth.accountNotActived.message")
-            );
+            throw new ValidationError(req.language, "auth.accountNotActived.message");
         }
 
         // check password
         const isEqual = await bcrypt.compare(password, user.password);
         if (!isEqual) {
-            throw new Error(
-                i18n(req.language, "auth.passwordIncorrect.message")
+            throw new ValidationError(
+                req.language,
+                "auth.passwordIncorrect.message"
             );
         }
 
@@ -108,15 +116,15 @@ module.exports = {
             },
             secretkey,
             {
-                expiresIn: "1h"
+                expiresIn: "10h"
             }
         );
-
+            
         return {
             userId: user.id,
             email: user.email,
             token,
-            tokenExpiration: 1
+            tokenExpiration: 10
         };
     }
 };

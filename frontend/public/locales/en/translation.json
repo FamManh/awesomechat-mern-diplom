@@ -5,12 +5,13 @@
             "Success": "Profile updated successfully"
         },
         "Create an account": "Create an account",
+        "Let's get started on Awesome thing": "Let's get started on Awesome thing",
         "Remember me": "Remember me",
         "Forgot password": "Forgot password",
         "Sign in": "Sign in",
         "Sign up": "Sign up",
         "Sign out": "Sign out",
-        "Login Now": "Login Now",
+        "Login Now": "Sign in Now",
         "Already have an account?": "Already have an account?",
         "Sign in with another account": "Sign in with another account",
         "Email unverified": {
@@ -18,10 +19,10 @@
         },
         "Password reset": {
             "Message": "Send password reset email",
-            "Error": "Email not recognized"
+            "Error": "Email is not recognized"
         },
         "Email address verification email": {
-            "Error": "Email not recognized"
+            "Error": "Email is not recognized"
         },
         "Verification email sent successfully": "Verification email sent successfully",
         "Password reset email sent successfully": "Password reset email sent successfully",
@@ -32,7 +33,9 @@
             "Please input your E-mail": "Please input your E-mail!",
             "Please input your Password": "Please input your Password!",
             "Please confirm your password": "Please confirm your password!!",
-            "Passwords don't match": "Passwords don't match!!"
+            "Passwords don't match": "Passwords don't match!!",
+            "Don't have an account yet": "Don't have an account yet?",
+            "Create one now": "Create one now!"
         }
     },
     "User": {
@@ -41,17 +44,29 @@
         "Avatar": "Avatar",
         "Email": "Email",
         "Emails": "Email(s)",
-        "fullNaNameme": "Name",
+        "FullName": "Name",
         "First Name": "First Name",
         "Last Name": "Last Name",
         "Status": "Status",
         "Disabled": "Disabled",
         "Phone Number": "Phone Number",
-        "Role": "Role",
         "Created at": "Created at",
         "Updated at": "Updated at",
         "Password": "Password",
         "Confirm password": "Confirm password",
         "Remember me": "Remember me"
+    },
+    "errors": {
+        "Back to home": "Back to home",
+        "403": "Sorry, you don't have access to this page",
+        "404": "Sorry, the page you visited does not exist",
+        "500": "Sorry, the server is reporting an error",
+        "forbidden": {
+            "message": "Forbidden"
+        },
+        "validation": {
+            "message": "An error occurred"
+        },
+        "Default error message": "Ops, an error occurred"
     }
 }

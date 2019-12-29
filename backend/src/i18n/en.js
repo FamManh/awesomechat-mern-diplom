@@ -5,7 +5,7 @@ const en = {
 
     auth: {
         passwordReset: {
-            error: `Email not recognized`
+            error: `Email is not recognized`
         },
         emailAddressInUse: {
             error: `User with this email already exists`
