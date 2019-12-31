@@ -9,7 +9,6 @@ const ValidationError  = require("../../errors/validationError");
 module.exports = {
     signup: async (args, req) => {
         let { email, firstName, lastName, password } = args.userInput;
-
         // Check user by email
         let user = await UserModel.findOne({
             email
@@ -72,7 +71,10 @@ module.exports = {
                     .catch(async err => {
                         // remove user
                         await UserModel.findByIdAndRemove(user._id);
-                        throw err;
+                        throw new ValidationError(
+                            req.language,
+                            auth.verificationEmailSent.error
+                        );
                     });
             })
             .catch(error => {

@@ -21,8 +21,8 @@ const Content = styled.div`
 const Signup = ({ form }) => {
     const { t } = useTranslation();
     const dispatch = useDispatch();
+
     const doSubmit = ({ firstname, lastname, email, password }) => {
-        console.log(firstname, lastname, email, password);
         dispatch(actions.doSignup(firstname, lastname, email, password));
     };
 
@@ -55,6 +55,7 @@ const Signup = ({ form }) => {
 
                 <Form
                     layout="vertical"
+                    // onSubmit={formik.handleSubmit}
                     onSubmit={e => {
                         e.preventDefault();
                         form.validateFields((err, values) => {
@@ -76,14 +77,26 @@ const Signup = ({ form }) => {
                                 rules: [
                                     {
                                         required: true,
+                                        message: t("Auth.Validations.Required")
+                                    },
+                                    {
+                                        min: 2,
                                         message: t(
-                                            "Auth.Validations.Pleases input your first name"
-                                        ),
-                                        whitespace: true
+                                            "Auth.Validations.Firstname.min",
+                                            { numOfCharacter: 2 }
+                                        )
+                                    },
+                                    {
+                                        max: 20,
+                                        message: t(
+                                            "Auth.Validations.Firstname.max",
+                                            { numOfCharacter: 20 }
+                                        )
                                     }
                                 ]
                             })(
                                 <Input
+                                    id="firstname"
                                     prefix={
                                         <User
                                             size={16}
@@ -113,14 +126,26 @@ const Signup = ({ form }) => {
                                 rules: [
                                     {
                                         required: true,
+                                        message: t("Auth.Validations.Required")
+                                    },
+                                    {
+                                        min: 2,
                                         message: t(
-                                            "Auth.Validations.Pleases input your last name"
-                                        ),
-                                        whitespace: true
+                                            "Auth.Validations.Lastname.min",
+                                            { numOfCharacter: 2 }
+                                        )
+                                    },
+                                    {
+                                        max: 20,
+                                        message: t(
+                                            "Auth.Validations.Lastname.max",
+                                            { numOfCharacter: 20 }
+                                        )
                                     }
                                 ]
                             })(
                                 <Input
+                                    id="lastname"
                                     prefix={
                                         <User
                                             size={16}
@@ -139,13 +164,13 @@ const Signup = ({ form }) => {
                                 {
                                     type: "email",
                                     message: t(
-                                        "Auth.Validations.The input is not valid E-mail"
+                                        "Auth.Validations.Email.The input is not valid E-mail"
                                     )
                                 },
                                 {
                                     required: true,
                                     message: t(
-                                        "Auth.Validations.Please input your E-mail"
+                                        "Auth.Validations.Email.Please input your E-mail"
                                     )
                                 }
                             ]
@@ -171,6 +196,20 @@ const Signup = ({ form }) => {
                                     required: true,
                                     message: t(
                                         "Auth.Validations.Please input your Password"
+                                    )
+                                },
+                                {
+                                    min: 6,
+                                    message: t(
+                                        "Auth.Validations.Password.min",
+                                        { numOfCharacter: 2 }
+                                    )
+                                },
+                                {
+                                    max: 30,
+                                    message: t(
+                                        "Auth.Validations.Password.max",
+                                        { numOfCharacter: 20 }
                                     )
                                 }
                             ]

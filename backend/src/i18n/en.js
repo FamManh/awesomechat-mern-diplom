@@ -11,7 +11,8 @@ const en = {
             error: `User with this email already exists`
         },
         verificationEmailSent: {
-            success: `A verification link has been sent to your email`
+            success: `A verification link has been sent to your email`,
+            error: `Verification links cannot be sent to your email`
         },
         emailUnverified: {
             message: `The email address in use, please confirm your email to continue.`

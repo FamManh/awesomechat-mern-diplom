@@ -7,3 +7,6 @@
 
 
 # Lỗi thông báo lỗi cho user. hiển lỗi ở cả sign in và sign up
+
+
+# Mật khẩu ở backend 6-30

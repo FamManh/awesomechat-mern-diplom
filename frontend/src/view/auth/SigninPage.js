@@ -69,13 +69,13 @@ const Signin = ({ form }) => {
                                 {
                                     type: "email",
                                     message: t(
-                                        "Auth.Validations.The input is not valid E-mail"
+                                        "Auth.Validations.Email.The input is not valid E-mail"
                                     )
                                 },
                                 {
                                     required: true,
                                     message: t(
-                                        "Auth.Validations.Please input your E-mail"
+                                        "Auth.Validations.Email.Please input your E-mail"
                                     )
                                 }
                             ]

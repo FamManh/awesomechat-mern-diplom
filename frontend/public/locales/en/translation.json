@@ -35,8 +35,34 @@
             "Please confirm your password": "Please confirm your password!!",
             "Passwords don't match": "Passwords don't match!!",
             "Don't have an account yet": "Don't have an account yet?",
-            "Create one now": "Create one now!"
+            "Create one now": "Create one now!",
+            "Email": {
+                "The input is not valid E-mail": "The input is not valid E-mail",
+                "Please input your E-mail": "Please input your E-mail!"
+            },
+            "Firstname":{
+                "max": "Must be {{numOfCharacter}} characters or less",
+                "min": "At less {{numOfCharacter}} characters"
+            },
+            "Lastname":{
+                "max": "Must be {{numOfCharacter}} characters or less",
+                "min": "At less {{numOfCharacter}} characters"
+            },
+            "Password":{
+                "max": "Must be {{numOfCharacter}} characters or less",
+                "min": "At less {{numOfCharacter}} characters"
+            },
+            "Required": "Required"
         }
+    },  
+    "Validation": {
+        "Date": {
+            "Error": "Invalid date!"
+        },
+        "Email": {
+            "Error": "Invalid email address!"
+        },
+        "Required": "Required!"
     },
     "User": {
         "Id": "Id",
@@ -54,7 +80,10 @@
         "Updated at": "Updated at",
         "Password": "Password",
         "Confirm password": "Confirm password",
-        "Remember me": "Remember me"
+        "Remember me": "Remember me",
+        "Validation": {
+            
+        }
     },
     "errors": {
         "Back to home": "Back to home",
