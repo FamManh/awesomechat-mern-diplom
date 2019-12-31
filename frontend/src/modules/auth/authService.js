@@ -3,7 +3,7 @@ import gql from "graphql-tag";
 export const signup = async (firstName, lastName, email, password) => {
     const response = await graphqlClient.mutate({
         mutation: gql`
-            mutation AUTH_SIGNIN($userInput: UserInput!) {
+            mutation AUTH_SIGNUP($userInput: UserInput!) {
                 signup(userInput: $userInput)
             }
         `,
