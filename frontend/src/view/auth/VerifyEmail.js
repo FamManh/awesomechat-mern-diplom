@@ -1,57 +1,61 @@
 import React from "react";
-import { Button, Checkbox, Form, Input, Typography, Row } from "antd";
-import { Eye, Mail, Triangle } from "react-feather";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
-import { useDispatch } from "react-redux";
+import { Button, Form, Input, message, Row, Typography } from "antd";
+import { Mail, Triangle } from "react-feather";
+import selectors from "../../modules/auth/authSelector";
+import { useSelector, useDispatch } from "react-redux";
 import actions from "../../modules/auth/authAction";
-import selectors from '../../modules/auth/authSelector';
-import {useSelector} from 'react-redux'; 
-import { useTranslation, Trans } from "react-i18next";
+import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import styled from "styled-components";
 
 const FormItem = Form.Item;
-const {Text} = Typography;
+const { Text } = Typography;
+
 const Content = styled.div`
     max-width: 400px;
     z-index: 2;
     min-width: 300px;
 `;
 
-const Signin = ({ form }) => {
+const SendVerificationEmail = ({ form }) => {
     const { t } = useTranslation();
     const dispatch = useDispatch();
 
-    const doSubmit = ({ email, password }) => {
-        dispatch(actions.doSignin(email, password));
+    const doSubmit = ({ email }) => {
+        dispatch(actions.verifyEmail(email));
     };
     return (
         <Row
             type="flex"
             align="middle"
             justify="center"
-            className="px-3 bg-white mh-page"
-            style={{ minHeight: "100vh" }}
+            className="px-3 bg-white"
+            style={{
+                minHeight: "100vh"
+            }}
         >
             <Content>
                 <div className="text-center mb-5">
-                    <Link to="/signin">
-                        <span className="brand mr-0">
+                    <Link to="/forgot">
+                        <a className="brand mr-0">
                             <Triangle size={32} strokeWidth={1} />
-                        </span>
+                        </a>
                     </Link>
-                    <h5 className="mb-0 mt-3">{t("Auth.Sign in")}</h5>
+                    <h5 className="mb-0 mt-3">
+                        {t("Auth.Verification email.Resend verification email")}
+                    </h5>
 
-                    <p className="text-muted">
-                        {t("Auth.Let's get started on Awesome thing")}
-                    </p>
+                    {/* <p className="text-muted">
+                        receive password reset instructions.
+                    </p> */}
                 </div>
-
                 {/* Display errors  */}
                 <div className="mb-3">
                     <Text type="danger">
                         {useSelector(selectors.selectErrorMessage)}
                     </Text>
                 </div>
+
                 <Form
                     layout="vertical"
                     onSubmit={e => {
@@ -63,7 +67,7 @@ const Signin = ({ form }) => {
                         });
                     }}
                 >
-                    <FormItem label={t("User.Email")}>
+                    <FormItem label="Email">
                         {form.getFieldDecorator("email", {
                             rules: [
                                 {
@@ -85,7 +89,9 @@ const Signin = ({ form }) => {
                                     <Mail
                                         size={16}
                                         strokeWidth={1}
-                                        style={{ color: "rgba(0,0,0,.25)" }}
+                                        style={{
+                                            color: "rgba(0,0,0,.25)"
+                                        }}
                                     />
                                 }
                                 type="email"
@@ -94,40 +100,11 @@ const Signin = ({ form }) => {
                         )}
                     </FormItem>
 
-                    <FormItem label={t("User.Password")}>
-                        {form.getFieldDecorator("password", {
-                            rules: [
-                                {
-                                    required: true,
-                                    message: t(
-                                        "Auth.Validations.Please input your Password"
-                                    )
-                                }
-                            ]
-                        })(
-                            <Input
-                                prefix={
-                                    <Eye
-                                        size={16}
-                                        strokeWidth={1}
-                                        style={{ color: "rgba(0,0,0,.25)" }}
-                                    />
-                                }
-                                type="password"
-                                placeholder={t("User.Password")}
-                            />
-                        )}
-                    </FormItem>
-
                     <FormItem>
-                        <Button
-                            loading={useSelector(selectors.selectLoading)}
-                            type="primary"
-                            htmlType="submit"
-                            block
-                            className="mt-3"
-                        >
-                            {t("Auth.Sign in")}
+                        <Button loading={useSelector(selectors.loadingEmailConfirmation)} type="primary" htmlType="submit" block>
+                            {t(
+                                "Auth.Verification email.Resend verification email"
+                            )}
                         </Button>
                     </FormItem>
 
@@ -152,4 +129,4 @@ const Signin = ({ form }) => {
     );
 };
 
-export default Form.create()(Signin);
+export default Form.create()(SendVerificationEmail);

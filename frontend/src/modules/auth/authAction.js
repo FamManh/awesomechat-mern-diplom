@@ -1,6 +1,6 @@
-import { signup, signin } from "./authService";
-import Errors from '../shared/error/errors';
-import {getHistory} from '../store';
+import { signup, signin, verifyEmail } from "./authService";
+import Errors from "../shared/error/errors";
+import { getHistory } from "../store";
 
 const prefix = "AUTH";
 
@@ -44,13 +44,13 @@ const actions = {
                 }
             });
         } catch (error) {
-             if (Errors.errorCode(error) !== 400) {
-                 Errors.handle(error);
-             }
-             dispatch({
-                 type: actions.AUTH_ERROR,
-                 payload: Errors.selectMessage(error)
-             });
+            if (Errors.errorCode(error) !== 400) {
+                Errors.handle(error);
+            }
+            dispatch({
+                type: actions.AUTH_ERROR,
+                payload: Errors.selectMessage(error)
+            });
         }
     },
 
@@ -66,7 +66,7 @@ const actions = {
                     currentUser
                 }
             });
-            getHistory().push('/');
+            getHistory().push("/");
         } catch (error) {
             if (Errors.errorCode(error) !== 400) {
                 Errors.handle(error);
@@ -80,24 +80,46 @@ const actions = {
 
     doSignout: async dispatch => {
         try {
-                dispatch({ type: actions.AUTH_START });
+            dispatch({ type: actions.AUTH_START });
 
-                window.localStorage.removeItem("asauth");
+            window.localStorage.removeItem("asauth");
 
-                dispatch({
-                    type: actions.AUTH_SUCCESS,
-                    payload: {
-                        currentUser: null
-                    }
-                });
-                getHistory().push("/signin");
-            } catch (error) {
+            dispatch({
+                type: actions.AUTH_SUCCESS,
+                payload: {
+                    currentUser: null
+                }
+            });
+            getHistory().push("/signin");
+        } catch (error) {
             if (Errors.errorCode(error) !== 400) {
                 Errors.handle(error);
             }
 
             dispatch({
                 type: actions.AUTH_ERROR,
+                payload: Errors.selectMessage(error)
+            });
+        }
+    },
+
+    verifyEmail: email => async dispatch => {
+        try {
+            console.log(email);
+
+            dispatch({ type: actions.EMAIL_CONFIRM_START });
+            console.log(email);
+            let verify = await verifyEmail(email);
+            console.log(verify);
+            dispatch({ type: actions.EMAIL_CONFIRM_SUCCESS });
+            getHistory().push("/email-verifivation");
+        } catch (error) {
+            if (Errors.errorCode(error) !== 400) {
+                Errors.handle(error);
+            }
+
+            dispatch({
+                type: actions.EMAIL_CONFIRM_ERROR,
                 payload: Errors.selectMessage(error)
             });
         }

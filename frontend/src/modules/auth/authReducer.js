@@ -22,15 +22,33 @@ export default (state = initData, { type, payload }) => {
                 errorMessage: null,
                 loading: false
             };
-        case actions.AUTH_ERROR: 
+        case actions.AUTH_ERROR:
             return {
                 ...state,
                 currentUser: null,
                 errorMessage: payload || null,
                 loading: false
             };
-        
+
+        case actions.EMAIL_CONFIRM_START:
+            return {
+                ...state,
+                errorMessage: null,
+                loadingEmailConfirmation: true
+            };
+        case actions.EMAIL_CONFIRM_SUCCESS:
+            return {
+                ...state,
+                errorMessage: null,
+                loadingEmailConfirmation: false
+            };
+        case actions.EMAIL_CONFIRM_ERROR:
+            return {
+                ...state,
+                errorMessage: payload || null,
+                loadingEmailConfirmation: false
+            };
         default:
-            return {...state};
+            return { ...state };
     }
 };
