@@ -37,6 +37,7 @@ module.exports = buildSchema(`
         cancelFriendRequest(friendId: String!): String!
         confirmFriendRequest(friendId: String!): String!
         unfriend(friendId: String!): String!
+        verifyEmail(email: String!): String!
     }
 
     schema {

@@ -25,6 +25,21 @@ const publicRoutes = [
         path: "/forgot-password",
         exact: true,
         loader: () => import("./auth/ForgotPasswordPage")
+    },
+    {
+        path: "/email-verifivation",
+        exact: true,
+        loader: () => import("./auth/VerificationEmailSent")
+    },
+    {
+        path: "/verify-email",
+        exact: true,
+        loader: () => import("./auth/VerifyEmail")
+    },
+    {
+        path: "/email-verified",
+        exact: true,
+        loader: () => import("./auth/EmailVerified")
     }
 ];
 

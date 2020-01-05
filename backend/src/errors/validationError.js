@@ -6,7 +6,6 @@ module.exports = class ValidationError extends Error {
         if (messageCode && i18nExists(language, messageCode)) {
             message = i18n(language, messageCode);
         }
-        console.log(messageCode);
 
         message = message || i18n(language, "errors.validation.message");
         super(message);

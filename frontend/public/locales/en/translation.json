@@ -14,8 +14,9 @@
         "Login Now": "Sign in Now",
         "Already have an account?": "Already have an account?",
         "Sign in with another account": "Sign in with another account",
-        "Email unverified": {
-            "Message": "Please confirm your email at <strong>{0}</strong> to confinue.`, submit: `Resend email verification"
+        "Email verified": {
+            "Successful": "Successful",
+            "Message": "Your email address has successfully verified"
         },
         "Password reset": {
             "Message": "Send password reset email",
@@ -24,7 +25,14 @@
         "Email address verification email": {
             "Error": "Email is not recognized"
         },
-        "Verification email sent successfully": "Verification email sent successfully",
+        "Verification email" : {    
+            "We're Sent You a Confirmation Email": "We're Sent You a Confirmation Email",
+            "Thank you for registering" : "Thank you for registering. You have been sent an email with a verification link inside. To begin enjoying the app, you must first click that link",
+            "Tip": "check your spam folder in case the email was incorrectly identified",
+            "If you not receive your verification email": "If you not receive your verification email, you may request another one",
+            "Resend verification email": "Resend Verification Email"
+        },
+
         "Password reset email sent successfully": "Password reset email sent successfully",
         "Validations": {
             "Pleases input your first name": "Pleases input your first name",

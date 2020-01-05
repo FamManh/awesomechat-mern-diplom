@@ -40,3 +40,19 @@ export const signin = async (email, password) => {
 
     return response.data.signin;
 }
+
+
+export const verifyEmail = async (email) => {
+    const response = await graphqlClient.query({
+        query: gql`
+            mutation EMAIL_CONFIRMATION($email: String!) {
+                verifyEmail(email: $email)
+            }
+        `,
+        variables: {
+            email
+        }
+    });
+
+    return response.data.verifyEmail;
+};
